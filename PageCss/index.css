@@ -374,6 +374,9 @@ body {
     flex-direction: column;
     
 }
+.sliderbarContent.redact .header{
+    color: white;
+}
 .sliderbarContent.redact .editor
 {
     display: flex;

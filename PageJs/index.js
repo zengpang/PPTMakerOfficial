@@ -131,6 +131,7 @@ const Sliderbar = {
         this.$sliderHeader = $(`.sliderbar .content header`);
         this.$sliderbarLogoName = $(`.sliderbar .content header p:nth-child(2)`);
         this.$$sliderbarItem = $$(`.sliderbar .content main p:nth-child(n+2)`);
+        //返回首页按钮
         this.$sliderbarItemBottom = $(`.sliderbar .content main p:nth-child(1)`);
         this.$$sliderbarInfo = $$(`.sliderbar .content footer p `);
         this.$sliderbarExitBtn = [...this.$$sliderbarInfo][0];
@@ -260,6 +261,7 @@ const Sliderbar = {
 //主题切换
 const Theme = {
     init() {
+
         this.$$figures = $$(`.theme figure`);
         this.$transition = $(`.theme .transition`);
         this.$align = $(`.theme .align`);
@@ -344,10 +346,10 @@ const Editor = {
 //图片上传
 const ImgUploader={
     init(){
-        //图片上传组件
+        //图片上传元素
         this.$fileInput=$(`#img-uploader`);
        
-        //代码编辑组件
+        //代码编辑元素
         this.$textarea=$(`.editor textarea`);
         //初始化
         AV.init({
