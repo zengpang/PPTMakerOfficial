@@ -105,11 +105,6 @@ function convert(raw) {
 };
 
 
-
-function loadMarkdown(raw) {
-    localStorage.markdown = raw;
-    location.reload();
-}
 function animSet($node, animName) {
     $node.style[`animation-name`] = animName;
 }
