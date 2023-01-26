@@ -131,6 +131,7 @@ const Sliderbar = {
         this.$sliderHeader = $(`.sliderbar .content header`);
         this.$sliderbarLogoName = $(`.sliderbar .content header p:nth-child(2)`);
         this.$$sliderbarItem = $$(`.sliderbar .content main p:nth-child(n+2)`);
+        //按钮底边高亮效果
         this.$sliderbarItemBottom = $(`.sliderbar .content main p:nth-child(1)`);
         this.$$sliderbarInfo = $$(`.sliderbar .content footer p `);
         //返回首页按钮
@@ -159,14 +160,15 @@ const Sliderbar = {
         this.$$sliderbarItem.forEach(index => {
             index.onclick = () => {
                 if (!this.isShowBottom) {
-
+                    //高亮显示效果移动
                     this.$sliderbarItemBottom.style.transform = `translateY(${index.offsetTop - index.offsetHeight * 2.3}px)`;
                     this.$sliderbarItemBottom.classList.add(`showBottom`);
                     this.$sliderbarExitBtn.classList.add(`showExit`);
                     this.isShowBottom = true
                 }
                 else {
-                    this.$sliderbarItemBottom.style.transition = `all .3s`;
+                  //保证高亮显示效果第一次出现的时候不是移动出现
+                  this.$sliderbarItemBottom.style.transition = `all .3s`;
                 }
               
                 switch (index.dataset.itemname) {
@@ -200,6 +202,7 @@ const Sliderbar = {
                 }
                 this.$$sliderbarItem.forEach(index => { index.classList.remove(`seleced`) });
                 index.classList.add(`seleced`);
+                //高亮显示效果移动
                 this.$sliderbarItemBottom.style.transform = `translateY(${index.offsetTop - index.offsetHeight * 2.3}px)`;
             }
         }
@@ -344,9 +347,6 @@ const Editor = {
             // Learn about plugins: https://revealjs.com/plugins/
             plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
         });
-    },
-    update() {
-        this.$editInput.value = this.markdown;
     }
 }
 //图片上传

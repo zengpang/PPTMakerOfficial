@@ -154,6 +154,7 @@ body {
     background-color: #9c88ff;
     opacity: 0;
     transition: opacity .3s;
+   
 }
 
 .sliderbar .content main p:nth-child(1).showBottom {
