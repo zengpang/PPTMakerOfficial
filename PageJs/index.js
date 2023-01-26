@@ -413,7 +413,7 @@ const ImgUploader={
         $textarea.value=`${oldText.substring(0,start)}${text} ${oldText.substring(end)}`;
         //聚焦
         $textarea.focus();
-        //选中组件中插入得文本
+        //选中组件中插入文本
         $textarea.setSelectionRange(start,start+text.length);
 
 
