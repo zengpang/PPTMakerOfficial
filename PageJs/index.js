@@ -131,10 +131,11 @@ const Sliderbar = {
         this.$sliderHeader = $(`.sliderbar .content header`);
         this.$sliderbarLogoName = $(`.sliderbar .content header p:nth-child(2)`);
         this.$$sliderbarItem = $$(`.sliderbar .content main p:nth-child(n+2)`);
-        //返回首页按钮
         this.$sliderbarItemBottom = $(`.sliderbar .content main p:nth-child(1)`);
         this.$$sliderbarInfo = $$(`.sliderbar .content footer p `);
+        //返回首页按钮
         this.$sliderbarExitBtn = [...this.$$sliderbarInfo][0];
+        this.$sliderbarInfoBtn=[...this.$$sliderbarInfo][1];
         this.$$sliderbarInfoContent = $$(`.sliderbar .content footer p span:nth-child(2)`);
         this.$sliderbarTouch = $(`.sliderbarTouch`);
         this.$sliderbarThemeContent = $(`.sliderbarContent.theme`);
@@ -214,6 +215,7 @@ const Sliderbar = {
                 })
                 this.$$sliderbarInfoContent.forEach(index => {
                     animPlay(index, `sliderbarShow`);
+                   
                 });
 
                 animPlay(this.$sliderbarLogoName, `sliderbarShow`);
@@ -253,7 +255,11 @@ const Sliderbar = {
             this.$sliderbardownloadContent.classList.remove(`show`);
             this.$sliderbarThemeContent.classList.remove(`show`);
             this.$sliderbarRedactContent.classList.remove(`show`);
+            this.$sliderbarspeakerContent.classList.remove(`show`);
         };
+        this.$sliderbarInfoBtn.onclick=()=>{
+            alert("相关信息(工程链接):https://github.com/zengpang/PPTMarkerOfficial");
+        }
 
     },
 
