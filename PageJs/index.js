@@ -10,40 +10,7 @@ let TPL = `## 欢迎使用PPTMarker
 ## 页面1`;//初始PPT语句
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
-const create$ = (type, classNames, id) => {
-    let element = document.createElement(type);
 
-    if (id != `` && id != null) {
-        element.setAttribute(`id`, id);
-    }
-    switch (true) {
-        case (classNames != null && typeof (classNames) == `string`):
-            {
-                element.classList.add(classNames);
-            }; break;
-        case (classNames != null && typeof (classNames) == `object` && classNames.length > 0): {
-            classNames.forEach(index => {
-                element.classList.add(index);
-            })
-        }; break;
-    }
-    return element;
-};
-const set$ = (element, attributeName, attributeValue, text) => {
-    if (element == null) {
-        return;
-    }
-    switch (true) {
-        case (attributeName != null && attributeName != ``
-            && attributeValue != null && attributeValue != ``): {
-                element.setAttribute(attributeName, attributeValue);
-            };
-        case (text != null && text != ``):
-            {
-                element.innerHTML = text;
-            }; break;
-    }
-};
 const in$ = (f, s) => f.querySelector(s);
 const in$$ = (f, s) => f.querySelectorAll(s);
 const isMain = str => (/^#{1,2}(?!#)/).test(str);
