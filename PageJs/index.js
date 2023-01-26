@@ -18,22 +18,6 @@ const isSub = str => (/^#{3}(?!#)/).test(str);
 const isEmpty = str => (str == null || str == `` || str === `undefined`);
 
 
-const isChange = (node1, node2) => {
-    let b = 0;
-    b = node1;
-    node1 = node2;
-    node2 = b;
-}
-const markdownWrite = (node) => {
-    let markdownLine = ``;
-    if (node.getNodeType() != `father`) {
-        markdownLine += `\n### ${node.getNodeName().trim()} \n${node.getNodeContent().trim()}`;
-    }
-    else {
-        markdownLine += `\n## ${node.getNodeName().trim()} \n${node.getNodeContent().trim()}`;
-    }
-    return markdownLine;
-}
 
 function convert(raw) {
     let arr = raw.split(/\n(?=\s*#)/).filter(s => s != "").map(s => s.trim());//根据#号分割用户输入内容
