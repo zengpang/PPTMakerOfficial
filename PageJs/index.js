@@ -44,11 +44,6 @@ const set$ = (element, attributeName, attributeValue, text) => {
             }; break;
     }
 };
-
-
-
-
-
 const in$ = (f, s) => f.querySelector(s);
 const in$$ = (f, s) => f.querySelectorAll(s);
 const isMain = str => (/^#{1,2}(?!#)/).test(str);
@@ -73,81 +68,6 @@ const markdownWrite = (node) => {
     return markdownLine;
 }
 
-
-//写入JSON格式的节点位置数据
-function writeNodeInfoJSON(nodeinfo) {
-
-    this.nodeId = nodeinfo.getNodeId();
-
-    if (isEmpty(nodeinfo.getNodeX())) {
-        nodeinfo.setNodeX(nodeDPosX);
-    }
-    if (isEmpty(nodeinfo.getNodeY())) {
-        nodeinfo.setNodeY(nodeDposY);
-    }
-    this.nodePosX = nodeinfo.getNodeX();
-    this.nodePosY = nodeinfo.getNodeY();
-    this.nodeRightid = nodeinfo.getRightCid();
-    this.nodeLeftid = nodeinfo.getLeftCid();
-    this.nodeFid = nodeinfo.getfatherid();
-    this.nodeSid = nodeinfo.getsonid();
-    this.nodeCLEPoint = nodeinfo.getcLEPoint();
-    this.nodeCREPoint = nodeinfo.getcREPoint();
-    this.nodeCTEPoint = nodeinfo.getcTEPoint();
-    this.nodeCBEPoint = nodeinfo.getcBEPoint();
-    let nodesJSONItem = `{
-        "nodeId":"${this.nodeId}",
-        "nodePosX":"${this.nodePosX}",
-        "nodePosY":"${this.nodePosY}",
-        "nodeRightid":"${this.nodeRightid}",
-        "nodeLeftid":"${this.nodeLeftid}",
-        "nodeFid":"${this.nodeFid}",
-        "nodeSid":"${this.nodeSid}",
-        "nodeCLEPoint":"${this.nodeCLEPoint}",
-        "nodeCREPoint":"${this.nodeCREPoint}",
-        "nodeCTEPoint":"${this.nodeCTEPoint}",
-        "nodeCBEPoint":"${this.nodeCBEPoint}"
-    }`;
-    if (nodesJSONStr == ``) {
-
-        nodesJSONItem = nodesJSONItem;
-
-    }
-    else {
-        nodesJSONItem = `,` + nodesJSONItem;
-
-    }
-    nodesJSONStr += nodesJSONItem;
-    localStorage.nodesInfo = `[${nodesJSONStr}]`;
-
-}
-function clearNodeInfoJSON() {
-    localStorage.nodesInfo = ``;
-}
-
-function readNodePosInfoJSON() {
-    if (isEmpty(localStorage.nodesInfo)) {
-        return;
-    }
-
-    let nodesPosInfo = JSON.parse(localStorage.nodesInfo);
-    // console.log(nodesPosInfo);
-    nodesPosInfo.forEach(index => {
-        let nodeid = index.nodeId;
-        let nodeInfo = nodesInfos.find(index => index.getNodeId() == nodeid);
-
-        if (!isEmpty(nodeInfo)) {
-
-
-
-            let nodeElement = document.getElementById(index.nodeId);
-            if (nodeElement != null) {
-                nodeElement.style.left = index.nodePosX;
-                nodeElement.style.top = index.nodePosY;
-            }
-        }
-    })
-}
 function convert(raw) {
     let arr = raw.split(/\n(?=\s*#)/).filter(s => s != "").map(s => s.trim());//根据#号分割用户输入内容
 
@@ -274,7 +194,6 @@ const Sliderbar = {
         this.$sliderbarRedactContent = $(`.sliderbarContent.redact`);
         this.$sliderbarspeakerContent=$(`.sliderbarContent.speaker`);
         this.$sliderbardownloadContent = $(`.sliderbarContent.download`);
-  
         this.isShrink = true;
         this.isShowBottom = false;
         this.bind();
